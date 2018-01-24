@@ -11,13 +11,13 @@
 #specifiy the game name
 variable "game_name"
 {
-  default="vacationbingo" #rename the default name to corresponding game
+  default="-name-of-game" #rename the default name to corresponding game
 }
 variable "aws_access_key" {
-  default="AKIAIV4YQ3V6GK7FMFFQ"
+  default="-YOUR-AWS-ACESS-KEY-"
 }
 variable "aws_secret_key" {
-  default = "0qwWpdC67fQ+8eiYwwNcEv2VLN76VvAMJb3rF4So"
+  default = "-YOUR-AWS-SECRET-KEY"
 }
 #specifies default region
 variable "region" {
@@ -37,7 +37,7 @@ variable "instance_type" {
 }
 #specifies the  private key to connect via ssh to different instances
 variable "key_name" {
-  default = "root-devops-key-pair"
+  default = "your-key-name-"
 }
 #specifies the  auto scaling group min no of instace to be attached
 variable "asg_min" {
