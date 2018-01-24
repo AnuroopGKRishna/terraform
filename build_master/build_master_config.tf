@@ -9,10 +9,6 @@
 # BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations under the License.
 
-/*resource "aws_key_pair" "build_master_key" {
-  key_name = "${var.key_name}"
-  public_key = "${file("./game/buid-master-key.pub")}"
-}*/
 resource "aws_instance" "game_buid_master" {
   ami = "${lookup(var.amis, var.region)}"
   instance_type = "${var.instance_type}"
