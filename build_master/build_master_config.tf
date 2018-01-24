@@ -23,5 +23,4 @@ resource "aws_instance" "game_buid_master" {
   associate_public_ip_address = true
   vpc_security_group_ids = ["${var.build_master_ssh_sg_id}"]
 key_name = "${var.key_name}"
-#key_name = "${aws_key_pair.build_master_key.key_name}"
 }

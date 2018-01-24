@@ -22,11 +22,10 @@ resource "aws_launch_configuration" "game_lc_prod" {
     "${var.game_custom_inbound_sg_id}",
     "${var.game_memcache_inbound_sg_id}",
     "${var.game_https_inbound_sg_id}",
-    "${var.game_http_ipv6_inbound_sg_id}"    
+    "${var.game_http_ipv6_inbound_sg_id}"
   ]
   user_data = "${file("./launch_configurations/userdata.sh")}"
- key_name = "${var.key_name}"
-  #key_name = "${aws_key_pair.build_master_key.key_name}"
+  key_name = "${var.key_name}"
   associate_public_ip_address = true
   name = "${var.game_name}-lc-prod"
 }
@@ -36,7 +35,3 @@ output "game_lc_id" {
 output "game_lc_name" {
   value = "${aws_launch_configuration.game_lc_prod.name}"
 }
-/*resource "aws_key_pair" "build_master_key" {
-  key_name = "${var.key_name}"
-  public_key = "${file("./game/root-devops-key-pair.pub")}"
-}*/
