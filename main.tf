@@ -20,6 +20,32 @@ module "vpc_subnets" {
   ip_range = "${var.ip_range}"
   game_name="${var.game_name}"
 }
+module "rds_instance" {
+  source = "./rds_instance"
+  game_name="${var.game_name}"
+  game_public_subnet_1 ="${module.vpc_subnets.game_public_subnet_1_cidr}"
+  game_public_subnet_2 ="${module.vpc_subnets.game_public_subnet_2_cidr}"
+  game_public_subnet_3= "${module.vpc_subnets.game_public_subnet_3_cidr}"
+  game_public_subnet_4= "${module.vpc_subnets.game_public_subnet_4_cidr}"
+  rds_vpc_id="${module.vpc_subnets.vpc_id}"
+}
+module "s3bucket" {
+  source = "./s3bucket"
+  game_name="${var.game_name}"
+}
+module "dynamodb" {
+  source = "./dynamodb"
+  game_name="${var.game_name}"
+}
+module "memcache"{
+  source = "./memcache"
+  game_name="${var.game_name}"
+  vpc_id="${module.vpc_subnets.vpc_id}"
+  game_public_subnet_1 ="${module.vpc_subnets.game_public_subnet_1_cidr}"
+  game_public_subnet_2 ="${module.vpc_subnets.game_public_subnet_2_cidr}"
+  game_public_subnet_3= "${module.vpc_subnets.game_public_subnet_3_cidr}"
+  game_public_subnet_4= "${module.vpc_subnets.game_public_subnet_4_cidr}"
+}
 module "launch_configurations" {
   source = "./launch_configurations"
   game_http_inbound_sg_id = "${module.vpc_subnets.game_http_inbound_sg_id}"
@@ -56,20 +82,7 @@ module "autoscaling_groups" {
   game_name="${var.game_name}"
 
   }
-
 /*
-module "s3bucket" {
-source = "./s3bucket"
-game_name="${var.game_name}"
-}
-
-module "dynamodb" {
-source = "./dynamodb"
-game_name="${var.game_name}"
-}
-
-
-
   module "build_master" {
     source = "./build_master"
     public_subnet_id = "${module.vpc_subnets.game_public_subnet_1_cidr}"
