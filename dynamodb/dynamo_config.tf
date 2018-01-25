@@ -13,6 +13,7 @@ resource "aws_dynamodb_table" "game_dynamodb_table" {
   name           = "${var.game_name}-live"
   read_capacity  = 10
   write_capacity = 10
+  hash_key       = "id"
   attribute {
     name = "id"
     type = "S"
