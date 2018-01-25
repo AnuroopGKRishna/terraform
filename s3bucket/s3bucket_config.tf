@@ -42,7 +42,7 @@ EOF
 
 resource "aws_s3_bucket" "s3_bucket_assets" {
     bucket = "${var.game_name}-assets"
-    acl = "public-read"
+    acl = "private"
 
     cors_rule {
         allowed_headers = ["*"]
@@ -84,7 +84,7 @@ EOF
 
 resource "aws_s3_bucket" "prod_bucket" {
     bucket = "${var.game_name}"
-    acl = "public-read"
+    acl = "private"
 
     cors_rule {
         allowed_headers = ["*"]
