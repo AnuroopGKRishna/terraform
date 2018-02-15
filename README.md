@@ -28,9 +28,9 @@ This will keep your AWS credentials in the `$HOME/.aws/credentials` file, which 
 
 ## Creating the Infastructure
 
-The Infastructure is implemented as a [Terraform Module](https://www.terraform.io/docs/modules/index.html). To launch, just run:
+The Infastructure is implemented as a [Terraform Module](https://www.terraform.io/docs/modules/index.html).
 
-Before apply the terraform provide the default vaaribles in variables.tf so that it can be used globally
+Before  we apply the terraform provide the default vaaribles in variables.tf so that it can be used globally
 ````
 variable "game_name"
 {
@@ -161,7 +161,6 @@ build_master/variables.tf                   # Inputs for creating build_master t
 game/                                       # Here we provide the key pair for the aws account that can be access to login to instances                                             
 
 ```
-
 
 ## Troubleshooting
 
