@@ -103,14 +103,17 @@ variable "public_subnet_4_cidr" {
 }
 
 ````
-##Adding the key key_pair
+## Adding the key pair
 
 Create a private key from the aws account and using the private key create a public key by using the commands as given below.(.pem to .pub)
-``bash
+
+```
 ssh-keygen -y -f mykey.pem > mykey.pub
-``
+
+```
+
 Then  run the following commands in the current project directory
-``bash
+```
 #initialzing the terraform  for creating
 terraform get
 
@@ -156,8 +159,6 @@ dynamodb/variables.tf                       # Inputs for creating dynamodb table
 build_master/build_master_config.tf         # Creates a master server where the repository of the app lies and contains the code to sync to other ec2 instances .
 build_master/variables.tf                   # Inputs for creating build_master table.
 game/                                       # Here we provide the key pair for the aws account that can be access to login to instances                                             
-
-
 
 ```
 
