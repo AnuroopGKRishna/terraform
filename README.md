@@ -1,4 +1,4 @@
-AWS Infastructure creation wiht  Terraform module
+AWS Infastructure creation with  Terraform module
 ------
 
 # terraform-aws
